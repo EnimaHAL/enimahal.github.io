@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- [EDIT HERE: Page Title & SEO Description] -->
+    <title>Automotive R&D & Product Development Portfolio | EV, Interior/Exterior Trim & Manufacturing</title>
+    <meta name="description" content="Automotive Product Development and R&D Engineering Portfolio: EV charge inlets & battery connections, exterior/interior trim, CATIA V5/V6, PTC Creo, DFMEA, DFM/DFA, and manufacturing engineering.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                    },
+                    colors: {
+                        blueprint: {
+                            950: '#050b14',
+                            900: '#091322',
+                            850: '#0d1b30',
+                            accent: '#00e5ff',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Technical engineering grid overlay */
+        .cad-grid {
+            background-size: 28px 28px;
+            background-image:
+                linear-gradient(to right, rgba(0, 229, 255, 0.045) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 229, 255, 0.045) 1px, transparent 1px);
+        }
+        .light .cad-grid {
+            background-size: 28px 28px;
+            background-image:
+                linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+        }
+
+        /* Subtle custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #091322;
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-100 light:bg-slate-50 light:text-slate-900 font-sans antialiased min-h-screen flex flex-col transition-colors duration-300">
+
+    <!-- ===================================================================== -->
+    <!-- TOP NAVIGATION BAR                                                    -->
+    <!-- ===================================================================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-slate-950/85 light:bg-white/85 border-b border-slate-800/90 light:border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+
+            <!-- Brand / Engineer Identifier -->
+            <!-- [EDIT HERE: Replace "ENG.FOLIO" with your initials or name] -->
+            <a href="#top" class="flex items-center gap-2.5 font-mono font-bold text-base sm:text-lg tracking-tight text-cyan-400 light:text-cyan-700 hover:opacity-90 transition">
+                <span class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 light:text-cyan-700">
+                    <i class="fa-solid fa-gear text-sm"></i>
+                </span>
+                <span>AUTO_R&amp;D</span><span class="text-slate-500 light:text-slate-400">.PORTFOLIO</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300 light:text-slate-700">
+                <a href="#projects" class="hover:text-cyan-400 light:hover:text-cyan-600 transition">Projects</a>
+                <a href="#experience" class="hover:text-cyan-400 light:hover:text-cyan-600 transition">Experience &amp; Skills</a>
+                <a href="#competencies" class="hover:text-cyan-400 light:hover:text-cyan-600 transition">CAD &amp; Tools</a>
+                <a href="#contact" class="hover:text-cyan-400 light:hover:text-cyan-600 transition">Contact</a>
+            </nav>
+
+            <!-- Action Controls -->
+            <div class="flex items-center gap-2.5">
+                <!-- Raw Source Code Modal Trigger (Makes editing/copying effortless) -->
+                <button id="openSourceModalBtn" type="button" title="View or copy raw HTML source code to edit locally" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-slate-900 light:bg-slate-100 hover:bg-slate-800 light:hover:bg-slate-200 text-cyan-400 light:text-cyan-700 border border-slate-700 light:border-slate-300 transition">
+                    <i class="fa-solid fa-code"></i>
+                    <span>SOURCE / EDIT</span>
+                </button>
+
+                <!-- Theme Toggle -->
+                <button id="themeToggleBtn" type="button" aria-label="Toggle Light/Dark Mode" class="p-2 rounded-lg bg-slate-900 light:bg-slate-100 hover:bg-slate-800 light:hover:bg-slate-200 text-slate-300 light:text-slate-700 border border-slate-700 light:border-slate-300 transition">
+                    <i id="themeIcon" class="fa-solid fa-sun text-amber-400 text-sm"></i>
+                </button>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobileMenuBtn" type="button" aria-label="Toggle Navigation Menu" class="md:hidden p-2 rounded-lg bg-slate-900 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-700 light:border-slate-300">
+                    <i id="menuIcon" class="fa-solid fa-bars text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-800 light:border-slate-200 bg-slate-950 light:bg-white px-4 py-4 space-y-2.5 text-sm">
+            <a href="#projects" class="mobile-nav-link block py-1.5 text-slate-300 light:text-slate-700 hover:text-cyan-400">Projects &amp; Case Studies</a>
+            <a href="#experience" class="mobile-nav-link block py-1.5 text-slate-300 light:text-slate-700 hover:text-cyan-400">Experience &amp; Role Skills</a>
+            <a href="#competencies" class="mobile-nav-link block py-1.5 text-slate-300 light:text-slate-700 hover:text-cyan-400">CAD, PLM &amp; Manufacturing</a>
+            <a href="#contact" class="mobile-nav-link block py-1.5 text-slate-300 light:text-slate-700 hover:text-cyan-400">Contact</a>
+            <button id="mobileSourceBtn" type="button" class="w-full mt-2 py-2 px-3 rounded-lg bg-cyan-500/10 text-cyan-400 light:text-cyan-700 border border-cyan-500/30 font-mono text-xs font-semibold flex items-center justify-center gap-2">
+                <i class="fa-solid fa-code"></i>
+                <span>VIEW / COPY RAW HTML CODE</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- HERO SECTION                                                          -->
+    <!-- ===================================================================== -->
+    <section id="top" class="relative py-16 lg:py-24 cad-grid border-b border-slate-800/90 light:border-slate-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-cyan-950/70 light:bg-cyan-50 text-cyan-300 light:text-cyan-800 border border-cyan-500/30 light:border-cyan-200">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span>MOROCCO • TANGIER / KENITRA / RABAT • OEM &amp; TIER-1 R&amp;D</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <!-- [EDIT HERE: Add your full name and title suffix if desired] -->
+                        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white light:text-slate-900 leading-tight">
+                            Automotive R&amp;D &amp; <span class="text-cyan-400 light:text-cyan-700">Product Engineer</span>
+                        </h1>
+                        <p class="text-base sm:text-xl font-mono text-slate-400 light:text-slate-600">
+                            EV Charge Inlets &amp; Battery Connections • Interior/Exterior Trim • CATIA V5/V6 &amp; PTC Creo
+                        </p>
+                    </div>
+                    <span>TE Connectivity <-- Bertrandt Group <-- Novares Group <-- Akka Technologies</span>
+
+                    <!-- [EDIT HERE: Customize your personal summary] -->
+                    <p class="text-sm sm:text-base text-slate-300 light:text-slate-600 leading-relaxed max-w-2xl">
+                        7+ years of hands-on automotive engineering experience spanning from RFQ to SOP and industrialization. Proven track record leading EV charging &amp; battery connectivity (TE Connectivity), exterior hang-on parts &amp; cockpit dashboards/consoles (Bertrandt Group for VW ID.7 &amp; Stellantis), exterior pillar trims &amp; roofbars (Novares Group for Renault, Stellantis/PSA &amp; Nissan), and assembly poka-yoke systems (Akka Technologies at Renault Tangier).
+                    </p>
+
+                    <!-- Primary Actions -->
+                    <div class="flex flex-wrap items-center gap-3.5 pt-1">
+                        <a href="#projects" class="px-5 py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm transition shadow-lg shadow-cyan-500/20 inline-flex items-center gap-2">
+                            <span>Explore OEM Projects</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#experience" class="px-5 py-3 rounded-lg bg-slate-900 light:bg-white hover:bg-slate-800 light:hover:bg-slate-100 text-slate-200 light:text-slate-800 font-semibold text-sm border border-slate-700 light:border-slate-300 transition inline-flex items-center gap-2">
+                            <i class="fa-solid fa-briefcase text-cyan-400 light:text-cyan-700"></i>
+                            <span>Career &amp; Skills Matrix</span>
+                        </a>
+                    </div>
+
+                    <!-- Social / Profile Links -->
+                    <!-- [EDIT HERE: Replace placeholder URLs with your real LinkedIn, GitHub, and Email] -->
+                    <div class="flex flex-wrap items-center gap-5 pt-2 text-xs sm:text-sm font-mono text-slate-400 light:text-slate-600">
+                        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 light:hover:text-cyan-700 inline-flex items-center gap-1.5 transition">
+                            <i class="fa-brands fa-linkedin text-base"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 light:hover:text-cyan-700 inline-flex items-center gap-1.5 transition">
+                            <i class="fa-brands fa-github text-base"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="#contact" class="hover:text-cyan-400 light:hover:text-cyan-700 inline-flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-envelope text-base"></i>
+                            <span>Direct Contact</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right Column: Automotive Scope Summary Card -->
+                <div class="lg:col-span-5">
+                    <div class="rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 p-5 sm:p-6 shadow-2xl space-y-5">
+                        <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-3">
+                            <span class="font-mono text-xs text-cyan-400 light:text-cyan-700 font-semibold">OEM &amp; TIER-1 PROGRAM SCOPE</span>
+                            <span class="font-mono text-[11px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 light:text-emerald-700 border border-emerald-500/20">RFQ → SOP → PPAP</span>
+                        </div>
+
+                        <!-- Custom SVG Vehicle Architecture Schematic -->
+                        <div class="rounded-xl bg-slate-950 light:bg-slate-100 border border-slate-800 light:border-slate-200 p-4 flex flex-col items-center justify-center">
+                            <svg viewBox="0 0 360 130" class="w-full h-32 text-cyan-400 light:text-cyan-700" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <!-- Ground line -->
+                                <line x1="15" y1="108" x2="345" y2="108" stroke-dasharray="4 4" opacity="0.4" />
+                                <!-- Vehicle silhouette -->
+                                <path d="M48 92 L58 66 L112 58 L152 30 L248 30 L288 58 L316 64 L322 92 L298 92 A20 20 0 0 0 258 92 L102 92 A20 20 0 0 0 62 92 Z" fill="rgba(0, 229, 255, 0.06)" />
+                                <!-- Roofbars highlight (Novares BJO) -->
+                                <path d="M156 26 L244 26" stroke="#34d399" stroke-width="2.4" stroke-linecap="round" />
+                                <!-- B & C Pillar Trim callouts (Novares HHN/DHN/5-Echo/P21) -->
+                                <line x1="165" y1="30" x2="152" y2="62" stroke="#f59e0b" stroke-width="2" />
+                                <line x1="225" y1="30" x2="218" y2="62" stroke="#f59e0b" stroke-width="2" />
+                                <!-- Cockpit / Console / Dashboard callout (Bertrandt Stellantis) -->
+                                <path d="M128 62 L146 46 L154 62" stroke="#a78bfa" stroke-width="2" />
+                                <!-- Tailgate hang-on callout (Bertrandt VW ID.7) -->
+                                <path d="M278 36 L296 62" stroke="#38bdf8" stroke-width="2.2" />
+                                <!-- EV Charge Inlet & Battery C2C callout (TE Connectivity) -->
+                                <rect x="298" y="68" width="14" height="10" rx="2" stroke="#22d3ee" stroke-width="2" />
+                                <rect x="135" y="76" width="85" height="12" rx="2" stroke-dasharray="2 2" stroke="#22d3ee" />
+                                <!-- Wheels -->
+                                <circle cx="82" cy="92" r="16" stroke-width="2.2" />
+                                <circle cx="82" cy="92" r="7" stroke-width="1.2" opacity="0.7" />
+                                <circle cx="278" cy="92" r="16" stroke-width="2.2" />
+                                <circle cx="278" cy="92" r="7" stroke-width="1.2" opacity="0.7" />
+                            </svg>
+                            <div class="flex flex-wrap justify-center gap-x-4 gap-y-1 text-[11px] font-mono text-slate-400 light:text-slate-600 mt-1">
+                                <span><i class="fa-solid fa-circle text-[7px] text-cyan-400 mr-1"></i>EV Inlet &amp; Battery</span>
+                                <span><i class="fa-solid fa-circle text-[7px] text-amber-400 mr-1"></i>B/C Pillars &amp; Roofbars</span>
+                                <span><i class="fa-solid fa-circle text-[7px] text-purple-400 mr-1"></i>Cockpit &amp; Hang-On</span>
+                            </div>
+                        </div>
+
+                        <!-- Key Metrics -->
+                        <div class="grid grid-cols-3 gap-3 text-center font-mono">
+                            <div class="p-3 rounded-xl bg-slate-950/70 light:bg-slate-50 border border-slate-800 light:border-slate-200">
+                                <div class="text-lg sm:text-xl font-bold text-cyan-400 light:text-cyan-700">4</div>
+                                <div class="text-[11px] text-slate-400 light:text-slate-600">Tier-1 &amp; R&amp;D Roles</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-950/70 light:bg-slate-50 border border-slate-800 light:border-slate-200">
+                                <div class="text-lg sm:text-xl font-bold text-emerald-400 light:text-emerald-700">7+</div>
+                                <div class="text-[11px] text-slate-400 light:text-slate-600">OEM Programs</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-950/70 light:bg-slate-50 border border-slate-800 light:border-slate-200">
+                                <div class="text-lg sm:text-xl font-bold text-amber-400 light:text-amber-700">CATIA V5-V6/PTC Creo</div>
+                                <div class="text-[11px] text-slate-400 light:text-slate-600">PLM &amp; Windchill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- FILTERABLE PROJECT CASE STUDIES                                       -->
+    <!-- ===================================================================== -->
+    <section id="projects" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div>
+
+                <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 light:text-cyan-700 font-semibold mb-1.5">
+                    /// AUTOMOTIVE PROJECT CASE STUDIES
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white light:text-slate-900">
+                    Vehicle Systems, Trim &amp; EV Connectivity
+                </h2>
+                <p class="text-sm text-slate-400 light:text-slate-600 mt-1.5 max-w-2xl">
+                    Filter by company or engineering domain, and click any card to inspect technical scope, CAD/process approach, and deliverables.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div id="projectFilters" class="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-slate-900 light:bg-slate-200/80 border border-slate-800 light:border-slate-300 self-start">
+                <button type="button" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-cyan-500 text-slate-950 transition">ALL (7)</button>
+                <button type="button" data-filter="te" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">TE CONNECTIVITY</button>
+                <button type="button" data-filter="bertrandt" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">BERTRANDT</button>
+                <button type="button" data-filter="novares" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">NOVARES</button>
+                <button type="button" data-filter="akka" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">AKKA / RENAULT</button>
+            </div>
+        </div>
+
+        <!-- Projects Grid (Rendered via JS from `projectsData`) -->
+    <section id="projects" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+            <div>
+                <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 light:text-cyan-700 font-semibold mb-1.5">
+                    /// AUTOMOTIVE PROJECT CASE STUDIES
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white light:text-slate-900">
+                    Vehicle Systems, Trim &amp; EV Connectivity
+                </h2>
+                <p class="text-sm text-slate-400 light:text-slate-600 mt-1.5 max-w-2xl">
+                    Filter by company or engineering domain, and click any card to inspect technical scope, CAD/process approach, and deliverables.
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div id="projectFilters" class="flex flex-wrap gap-1.5 p-1.5 rounded-xl bg-slate-900 light:bg-slate-200/80 border border-slate-800 light:border-slate-300 self-start">
+                <button type="button" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-cyan-500 text-slate-950 transition">ALL (7)</button>
+                <button type="button" data-filter="te" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">TE CONNECTIVITY</button>
+                <button type="button" data-filter="bertrandt" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">BERTRANDT</button>
+                <button type="button" data-filter="novares" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">NOVARES</button>
+                <button type="button" data-filter="akka" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-mono font-medium text-slate-300 light:text-slate-700 hover:text-cyan-400 transition">AKKA / RENAULT</button>
+            </div>
+        </div>
+
+        <!-- Projects Grid (Rendered via JS from `projectsData`) -->
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- EXPERIENCE & ROLE-SPECIFIC SKILLS TIMELINE                            -->
+    <!-- ===================================================================== -->
+    <section id="experience" class="py-16 lg:py-24 bg-slate-900/50 light:bg-slate-100/80 border-y border-slate-800/90 light:border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-12">
+                <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 light:text-cyan-700 font-semibold mb-1.5">
+                    /// EXPERIENCE &amp; ROLE SKILLS
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white light:text-slate-900">
+                    Career Progression &amp; Position Competencies
+                </h2>
+                <p class="text-sm text-slate-400 light:text-slate-600 mt-1.5 max-w-2xl">
+                    Complete chronological history with OEM program scopes and verified technical skills per role.
+                </p>
+            </div>
+
+            <!-- Timeline Container (Rendered via JS from `experienceData`) -->
+            <div id="experienceTimeline" class="relative border-l-2 border-slate-800 light:border-slate-300 ml-3 sm:ml-6 space-y-10"></div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- CORE COMPETENCIES MATRIX                                              -->
+    <!-- ===================================================================== -->
+    <section id="competencies" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="mb-12">
+            <div class="font-mono text-xs uppercase tracking-wider text-cyan-400 light:text-cyan-700 font-semibold mb-1.5">
+                /// TECHNICAL STACK &amp; MANUFACTURING
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-bold text-white light:text-slate-900">
+                CAD, PLM, Processes &amp; Quality Standards
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1: CAD & PLM -->
+            <div class="rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 p-6 space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 light:text-cyan-700">
+                    <i class="fa-solid fa-cube text-lg"></i>
+                </div>
+                <h3 class="text-base font-bold text-white light:text-slate-900">3D CAD &amp; PLM Systems</h3>
+                <div class="flex flex-wrap gap-2 text-xs font-mono">
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-cyan-300 light:text-cyan-800 border border-slate-800 light:border-slate-200">CATIA V5</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-cyan-300 light:text-cyan-800 border border-slate-800 light:border-slate-200">CATIA V6</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-cyan-300 light:text-cyan-800 border border-slate-800 light:border-slate-200">PLM System</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-cyan-300 light:text-cyan-800 border border-slate-800 light:border-slate-200">PTC Creo</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-cyan-300 light:text-cyan-800 border border-slate-800 light:border-slate-200">Windchill</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-cyan-300 light:text-cyan-800 border border-slate-800 light:border-slate-200">PdTech</span>
+                </div>
+            </div>
+
+            <!-- Card 2: Polymer & Metal Processes -->
+            <div class="rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 p-6 space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 light:text-emerald-700">
+                    <i class="fa-solid fa-industry text-lg"></i>
+                </div>
+                <h3 class="text-base font-bold text-white light:text-slate-900">Manufacturing &amp; Molding</h3>
+                <div class="flex flex-wrap gap-2 text-xs font-mono">
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-emerald-300 light:text-emerald-800 border border-slate-800 light:border-slate-200">Injection Molding</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-emerald-300 light:text-emerald-800 border border-slate-800 light:border-slate-200">Blow Molding</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-emerald-300 light:text-emerald-800 border border-slate-800 light:border-slate-200">Twinsheet</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-emerald-300 light:text-emerald-800 border border-slate-800 light:border-slate-200">Tooling Feasibility</span>
+                </div>
+            </div>
+
+            <!-- Card 3: R&D, Quality & Validation -->
+            <div class="rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 p-6 space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 light:text-amber-700">
+                    <i class="fa-solid fa-shield-halved text-lg"></i>
+                </div>
+                <h3 class="text-base font-bold text-white light:text-slate-900">Quality, Risk &amp; Validation</h3>
+                <div class="flex flex-wrap gap-2 text-xs font-mono">
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-amber-300 light:text-amber-800 border border-slate-800 light:border-slate-200">DFMEA</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-amber-300 light:text-amber-800 border border-slate-800 light:border-slate-200">Tolerance Analysis</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-amber-300 light:text-amber-800 border border-slate-800 light:border-slate-200">PPAP &amp; APQP</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-amber-300 light:text-amber-800 border border-slate-800 light:border-slate-200">Checking Fixtures</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-amber-300 light:text-amber-800 border border-slate-800 light:border-slate-200">Metrology</span>
+                </div>
+            </div>
+
+            <!-- Card 4: Project Piloting & Lean -->
+            <div class="rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 p-6 space-y-4">
+                <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 light:text-purple-700">
+                    <i class="fa-solid fa-diagram-project text-lg"></i>
+                </div>
+                <h3 class="text-base font-bold text-white light:text-slate-900">Piloting &amp; Operations</h3>
+                <div class="flex flex-wrap gap-2 text-xs font-mono">
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-purple-300 light:text-purple-800 border border-slate-800 light:border-slate-200">RFQ to SOP</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-purple-300 light:text-purple-800 border border-slate-800 light:border-slate-200">Project Piloting</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-purple-300 light:text-purple-800 border border-slate-800 light:border-slate-200">Team Leadership</span>
+                    <span class="px-2.5 py-1 rounded-md bg-slate-950 light:bg-slate-100 text-purple-300 light:text-purple-800 border border-slate-800 light:border-slate-200">Lean Manufacturing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- CONTACT & DEPLOYMENT FOOTER                                           -->
+    <!-- ===================================================================== -->
+    <footer id="contact" class="mt-auto border-t border-slate-800 light:border-slate-200 bg-slate-900/70 light:bg-white py-14">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div class="space-y-2 max-w-xl">
+                <div class="font-mono text-xs text-cyan-400 light:text-cyan-700 font-semibold">/// CONNECT &amp; COLLABORATE</div>
+                <h2 class="text-2xl font-bold text-white light:text-slate-900">Ready for Automotive R&amp;D &amp; Product Development Discussions</h2>
+                <p class="text-sm text-slate-400 light:text-slate-600">
+                    Available for technical collaboration across EV connectivity, interior/exterior automotive systems, and product industrialization.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+                <!-- [EDIT HERE: Replace with your real email address] -->
+                <button id="copyEmailBtn" type="button" data-email="amine.lahlouh1994@gmail.com" class="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-mono text-xs font-bold transition inline-flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>COPY EMAIL</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-slate-800/80 light:border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+            <span>&copy; <span id="currentYear"></span> Automotive R&amp;D Engineering Portfolio</span>
+            <span>TE Connectivity • Bertrandt Group • Novares Group • Akka Technologies</span>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- CASE STUDY DETAIL MODAL                                               -->
+    <!-- ===================================================================== -->
+    <div id="caseStudyModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-sm overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="relative w-full max-w-2xl rounded-2xl bg-slate-900 light:bg-white border border-slate-700 light:border-slate-300 shadow-2xl p-6 sm:p-8 my-8 max-h-[90vh] overflow-y-auto">
+            <button id="closeCaseModalBtn" type="button" aria-label="Close Case Study Modal" class="absolute top-4 right-4 w-9 h-9 rounded-lg bg-slate-800 light:bg-slate-100 hover:bg-slate-700 light:hover:bg-slate-200 text-slate-300 light:text-slate-700 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="caseStudyModalContent" class="space-y-6"></div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- RAW SOURCE CODE VIEWER / COPY MODAL                                   -->
+    <!-- ===================================================================== -->
+    <div id="sourceCodeModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-sm overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="sourceModalTitle">
+        <div class="relative w-full max-w-4xl rounded-2xl bg-slate-900 light:bg-white border border-slate-700 light:border-slate-300 shadow-2xl p-5 sm:p-6 flex flex-col gap-4 max-h-[90vh]">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 light:border-slate-200 pb-3">
+                <div>
+                    <h3 id="sourceModalTitle" class="text-base sm:text-lg font-bold text-white light:text-slate-900 font-mono">index.html — Complete Source Code</h3>
+                    <p class="text-xs text-slate-400 light:text-slate-600">Copy this code, save it as <code>index.html</code>, search for <code>[EDIT HERE]</code> to customize, and upload to GitHub Pages.</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="copySourceBtn" type="button" class="px-3.5 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-mono text-xs font-bold inline-flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Copy All HTML</span>
+                    </button>
+                    <button id="closeSourceModalBtn" type="button" aria-label="Close Source Modal" class="w-9 h-9 rounded-lg bg-slate-800 light:bg-slate-100 text-slate-300 light:text-slate-700 flex items-center justify-center transition">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <textarea id="rawHtmlTextarea" readonly class="w-full h-96 p-4 rounded-xl bg-slate-950 text-emerald-300 font-mono text-xs border border-slate-800 focus:outline-none resize-none"></textarea>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- IMAGE URL / PHOTO CUSTOMIZER MODAL                                    -->
+    <!-- ===================================================================== -->
+    <div id="photoEditorModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/85 backdrop-blur-sm overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+        <div class="relative w-full max-w-lg rounded-2xl bg-slate-900 light:bg-white border border-slate-700 light:border-slate-300 shadow-2xl p-6 space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-800 light:border-slate-200 pb-3">
+                <div>
+                    <h3 id="photoModalTitle" class="text-base sm:text-lg font-bold text-white light:text-slate-900 font-mono">Customize Project Photo</h3>
+                    <p id="photoModalProjectName" class="text-xs text-cyan-400 light:text-cyan-700 font-mono"></p>
+                </div>
+                <button id="closePhotoModalBtn" type="button" aria-label="Close Photo Modal" class="w-8 h-8 rounded-lg bg-slate-800 light:bg-slate-100 text-slate-300 light:text-slate-700 flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="space-y-3 text-xs">
+                <label class="block font-mono font-semibold text-slate-300 light:text-slate-700">
+                    Direct Image URL (Web URL or relative path like <code>./images/car.jpg</code>)
+                </label>
+                <input id="customPhotoUrlInput" type="text" placeholder="https://..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 light:bg-slate-100 text-slate-100 light:text-slate-900 border border-slate-700 light:border-slate-300 font-mono text-xs focus:outline-none focus:border-cyan-400" />
+                <p class="text-[11px] text-slate-400 light:text-slate-600 leading-relaxed">
+                    Tip: Paste any direct image URL from the internet or a local file path inside your GitHub repository. Changes preview immediately and are baked into the <strong>SOURCE / EDIT</strong> code when you export.
+                </p>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
+                <button id="resetPhotoUrlBtn" type="button" class="px-3.5 py-2 rounded-lg bg-slate-800 light:bg-slate-200 hover:bg-slate-700 text-slate-300 light:text-slate-800 font-mono text-xs transition">
+                    Reset Default
+                </button>
+                <button id="savePhotoUrlBtn" type="button" class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-mono text-xs font-bold transition">
+                    Apply Photo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Status Toast -->
+    <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-xl bg-emerald-500 text-slate-950 font-mono text-xs font-bold shadow-xl items-center gap-2">
+        <i class="fa-solid fa-circle-check text-sm"></i>
+        <span id="toastMessage">Copied to clipboard!</span>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- APPLICATION DATA & INTERACTIVE SCRIPT                                 -->
+    <!-- ===================================================================== -->
+    <script>
+        /*
+        ======================================================================
+        [EDIT HERE]: PROJECTS CASE STUDIES DATA
+        Real internet photos are pre-configured via Wikimedia Commons
+        Special:FilePath URLs with automatic backup fallbacks + SVG schematics.
+        ======================================================================
+        */
+        const projectsData = [
+            {
+                id: "te-ev-connectivity",
+                companyKey: "te",
+                companyLabel: "TE Connectivity • Tangier",
+                period: "Apr 2026 – Present",
+                title: "EV Charge Inlet & C2C Battery Connection Products",
+                badge: "RFQ → SOP • PTC CREO",
+                imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/CCS_Combo_2_charge_port_on_electric_car.jpg?width=1200",
+                fallbackSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Combined_Charging_System_Type_2_socket.jpg?width=1200",
+                officialProductUrl: "https://www.te.com/en/products/connectors/automotive-connectors/intersection/amp-charging-inlet-500-series.html",
+                officialProductLabel: "TE Connectivity Official AMP+ Charging Inlet 500 Series",
+                imageCaption: "EV High-Voltage Charge Inlet (AMP+ 500 Series Reference) & C2C Battery Connection",
+                svgType: "ev",
+                summary: "End-to-end automotive product development from RFQ through industrialization and SOP for EV charge inlet and C2C battery connection products, plus BIW plastic/metallic insert support.",
+                challenge: "Translate strict customer requirements, TE RTEX standards, and validation criteria into robust, manufacturable EV connectivity architectures with tight dimensional tolerances and reliable PPAP deliverables.",
+                approach: "Executed 3D CAD design in PTC Creo and PLM management in Windchill; performed DFM/DFA, tolerance stack-up analysis, and tooling feasibility reviews while coordinating cross-functionally across Morocco and EMEA (tooling, manufacturing, quality, purchasing, and lab teams).",
+                tools: ["PTC Creo", "Windchill", "DFM / DFA", "Tolerance Analysis", "Tooling Feasibility", "PPAP", "BIW Inserts"],
+                deliverables: [
+                    "RFQ-to-SOP product design packages for EV Charge Inlet and C2C Battery Connection products.",
+                    "Validation support, root-cause analysis, corrective actions, engineering changes, and PPAP deliverables.",
+                    "Plastic component and metallic insert integration for vehicle BIW applications."
+                ]
+            },
+            {
+                id: "bertrandt-id7-hangon",
+                companyKey: "bertrandt",
+                companyLabel: "Bertrandt Group • Rabat",
+                period: "Nov 2025 – Apr 2026",
+                title: "Volkswagen ID.7 Phase 2 — Hang-On Parts",
+                badge: "VW ID.7 • EXTERIOR HANG-ON",
+                imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/2024_Volkswagen_ID.7.jpg?width=1200",
+                fallbackSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Volkswagen_ID.7_Pro_S_(2024)_(54518854582).jpg?width=1200",
+                officialProductUrl: "",
+                officialProductLabel: "",
+                imageCaption: "Volkswagen ID.7 Phase 2: Tailgate Cover + Structure, FR & RR Emblems, Flaps, Windshield & Lettering",
+                svgType: "exterior",
+                summary: "Technical product convergence and part development for Volkswagen ID.7 Phase 2 hang-on parts: tailgate cover and structure, front/rear emblems, flaps, windshield interface, and lettering.",
+                challenge: "Align exterior hang-on part geometry, supplier proposals, and R&D validation milestones across multiple visible exterior sub-assemblies.",
+                approach: "Analyzed customer inputs, proposed technical solutions, validated supplier and team proposals, led scope convergence meetings, and supported design engineers during R&D design and validation reviews.",
+                tools: ["CATIA V5", "Product R&D", "Design Validation", "Supplier Review", "Technical Documentation"],
+                deliverables: [
+                    "Converged exterior hang-on technical solutions across tailgate cover/structure, emblems, flaps, windshield, and lettering.",
+                    "Structured R&D design/validation review participation and technical guidance for design engineers."
+                ]
+            },
+            {
+                id: "novares-renault-hhn-austral",
+                companyKey: "novares",
+                companyLabel: "Novares Group • Kenitra",
+                period: "Apr 2019 – Oct 2023",
+                title: "Renault Austral (HHN), DHN & BJO — Exterior Pillar Trims & Roofbars",
+                badge: "RENAULT AUSTRAL • HHN / DHN / BJO",
+                imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_Austral_1X7A6753.jpg?width=1200",
+                fallbackSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/2023_Renault_Austral.jpg?width=1200",
+                officialProductUrl: "",
+                officialProductLabel: "",
+                imageCaption: "Renault Austral (HHN) Exterior Front & Rear B/C Pillar Trim, DHN C-Pillar Trim & BJO Roofbars",
+                svgType: "trim",
+                summary: "Designer for Renault Austral (HHN) exterior front & rear B and C pillar trim, DHN exterior C pillar trim, and BJO roofbars from architecture through validation.",
+                challenge: "Deliver cost-, quality-, and schedule-compliant exterior plastic pillar trim and roofbar concepts while managing DFMEA, checking fixtures.",
+                approach: "Managed 3D/2D part design in CATIA V5, specification validation,checking fixture specification.",
+                tools: ["CATIA V5", "DFMEA","Injection Molding", "Checking Fixtures"],
+                deliverables: [
+                    "Production-ready 3D CAD and 2D drawings for Front & Rear B and C pillar trim, DHN exterior C pillar trim, and BJO roofbars.",
+                    "3D/2D data release & archiving, and checking fixture validation."
+                ]
+            },
+            {
+                id: "novares-renault-5-echo",
+                companyKey: "novares",
+                companyLabel: "Novares Group • Kenitra",
+                period: "Apr 2019 – Oct 2023",
+                title: "Renault 5 E-Tech (5-Echo) — Exterior Front & Rear B & C Pillar Trim",
+                badge: "RENAULT 5-ECHO • EXTERIOR TRIM",
+                imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_5_E-Tech_Electric_(54319332119).jpg?width=1200",
+                fallbackSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Renault_5_E-Tech_Rolland_Garros.jpg?width=1200",
+                officialProductUrl: "",
+                officialProductLabel: "",
+                imageCaption: "Renault 5 E-Tech (5-Echo) Exterior Front and Rear B & C Pillar Trim",
+                svgType: "trim",
+                summary: "Designer for the Renault 5 E-Tech (5-Echo) exterior front and rear B and C pillar trims, translating styling surfaces into manufacturable injection-molded assemblies.",
+                challenge: "Deliver cost-, quality-, and schedule-compliant exterior plastic pillar trim and roofbar concepts while managing DFMEA, checking fixtures.",
+                approach: "Managed 3D/2D part design in CATIA V5, specification validation,checking fixture specification.",
+                tools: ["CATIA V5", "DFMEA", "Injection Molding", "Checking Fixtures", "Engineering Design"],
+                deliverables: [
+                    "Production-ready 3D CAD and 2D drawings for 5-Echo exterior Front & Rear B and C pillar trims.",
+                    "Validated checking fixtures and archived project data packages."
+                ]
+            },
+            {
+                id: "bertrandt-stellantis-cockpit",
+                companyKey: "bertrandt",
+                companyLabel: "Bertrandt Group • SALE",
+                period: "Oct 2023 – Nov 2025",
+                title: "Stellantis P1H — Dashboard & Center Console (SYNC1 to SYNC5)",
+                badge: "STELLANTIS P1H • CATIA V5/V6",
+                imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Peugeot_208_GT_Line_(2019)_interior.jpg?width=1200",
+                fallbackSrc: "",
+                officialProductUrl: "",
+                officialProductLabel: "",
+                imageCaption: "Stellantis P1H Cockpit Dashboard & Center Console Architecture",
+                svgType: "cockpit",
+                summary: "Product development of interior plastic components for Stellantis P1H dashboard and center console scope from SYNC1 through SYNC5 maturity milestones.",
+                challenge: "Ensure strict adherence to OEM plastic design rules, assembly techniques, and 2D/3D digital deliverables while converging technical solutions with client teams and suppliers.",
+                approach: "Developed and refined plastic parts in CATIA V5/V6 balancing process constraints, styling/architecture interfaces, and assembly feasibility; managed customer data archiving, weekly deliverable reporting, and technical team support.",
+                tools: ["CATIA V5", "CATIA V6", "Injection Molding", "Blow Molding", "PLM Tools", "2D / 3D CAD", "Supplier Convergence"],
+                deliverables: [
+                    "Validated 2D/3D digital models and archived material/CAD datasets in customer PLM.",
+                    "Technical convergence with Stellantis engineering and Tier suppliers from build-to-print to SYNC5.",
+                    "Team guidance on plastic part design rules and assembly constraints."
+                ]
+            },
+            {
+                id: "novares-psa-p21",
+                companyKey: "novares",
+                companyLabel: "Novares Group • Kenitra",
+                period: "Apr 2019 – Oct 2023",
+                title: "PSA P21 — Exterior Front & Rear B-Pillar Exterior Trim",
+                badge: "PSA P21 • EXTERIOR TRIM",
+                imageSrc: "https://commons.wikimedia.org/wiki/Special:FilePath/Peugeot_208_1X7A7341.jpg?width=1200",
+                fallbackSrc: "",
+                officialProductUrl: "",
+                officialProductLabel: "",
+                imageCaption: "PSA P21 Exterior Front & Rear B-Pillar Exterior Trim Engineering Scope",
+                svgType: "trim",
+                summary: "Product engineering for PSA P21 exterior front and rear B-pillar exterior trim , quality, and timing targets.",
+                challenge: "Mold duplication,Maintain surface/edge quality, dimensional stability, and repeatable manufacturing feasibility across front and rear B-pillar exterior trim parts.",
+                approach: "Technical specification validation, DFMEA reviews, prototype/metrology coordination, and checking fixture verification.",
+                tools: ["CATIA V5", "DFMEA", "Injection Molding", "Checking Fixtures", "Engineering Design"],
+                deliverables: [
+                    "Production-ready 3D models, 2D drawings, and archived engineering packages for PSA P21 B-pillar exterior trim.",
+                    "Cross-functional validation across calculations, metrology, and checking fixtures."
+                ]
+            },
+            {
+                id: "akka-renault-poka-yoke",
+                companyKey: "akka",
+                companyLabel: "Akka Technologies • Tangier",
+                period: "Jan 2019 – Apr 2019",
+                title: "Renault Tangier DIVD Assembly — Anti-Forget System",
+                badge: "POKA-YOKE • MANUFACTURING",
+                imageSrc: "",
+                fallbackSrc: "",
+                officialProductUrl: "",
+                officialProductLabel: "",
+                imageCaption: "Renault Tangier DIVD Assembly Line Anti-Forget System & SAO Tooling",
+                svgType: "manufacturing",
+                summary: "Manufacturing engineering mission at Renault Tangier DIVD assembly department deploying the 'Anti-Forget System' and configuring SAO screwdrivers and controller boxes.",
+                challenge: "Prevent missed fastening/assembly steps on the line by integrating error-proofing controls, supplier equipment specs, and procurement tenders.",
+                approach: "Led the Anti-Forget System improvement in the assembly department, configured SAO screwdrivers and boxes, authored technical means specifications, managed supplier development, and launched purchasing tenders.",
+                tools: ["Lean Manufacturing", "SAO Screwdrivers", "Manufacturing Process", "Supplier Specs", "Tenders"],
+                deliverables: [
+                    "Improved Anti-Forget assembly error-proofing and configured SAO screwdrivers & boxes.",
+                    "Developed equipment specifications, coordinated supplier build, and supported purchasing tenders."
+                ]
+            }
+        ];
+
+        // Load any custom user photo overrides saved in localStorage
+        const STORAGE_KEY = "auto_rd_portfolio_custom_photos_v1";
+        let customPhotoOverrides = {};
+        try {
+            customPhotoOverrides = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        } catch (e) {
+            customPhotoOverrides = {};
+        }
+
+        function getEffectiveImageSrc(project) {
+            if (Object.prototype.hasOwnProperty.call(customPhotoOverrides, project.id)) {
+                return customPhotoOverrides[project.id];
+            }
+            return project.imageSrc;
+        }
+
+        /*
+        ======================================================================
+        [EDIT HERE]: EXPERIENCE & ROLE-BASED SKILLS DATA
+        ======================================================================
+        */
+        const experienceData = [
+            {
+                role: "Sr R&D Product Engineer",
+                company: "TE Connectivity",
+                employmentType: "Full-time • Hybrid",
+                period: "Apr 2026 – Present",
+                location: "Tangier, Tanger-Tetouan-Al Hoceima, Morocco",
+                programs: ["C2C Battery", "Charge Inlet", "BIW Inserts"],
+                highlights: [
+                    "Lead automotive product development from RFQ through industrialization and SOP for EV charge inlet and battery connection products.",
+                    "Translate customer requirements into manufacturable, cost-effective designs using PTC Creo and manage data in Windchill.",
+                    "Drive DFM/DFA, tolerance analysis, tooling feasibility, validation, root-cause analysis, corrective actions, engineering changes, and PPAP deliverables.",
+                    "Coordinate across Morocco and EMEA with customers, tooling, manufacturing, quality, purchasing, and laboratory teams; support BIW plastic/metallic insert design and cost/design optimization."
+                ],
+                skills: [
+                    "Product Design Support", "PTC Creo", "Windchill", "Documentation",
+                    "Injection Molding", "Engineering Support", "DFM/DFA", "Tolerance Analysis", "PPAP"
+                ]
+            },
+            {
+                role: "Product Development Engineer — ID.7 Phase 2 Hang-On Parts",
+                company: "Bertrandt Group",
+                employmentType: "Full-time • Hybrid",
+                period: "Nov 2025 – Apr 2026",
+                location: "Rabat, Rabat-Salé-Kénitra, Morocco",
+                programs: ["ID.7 Phase 2 (Tailgate Cover + Structure, FR&RR Emblems, Flaps, Windshield, Lettering)"],
+                highlights: [
+                    "Ensure technical product convergence and part development for exterior hang-on components.",
+                    "Provide technical guidance to design engineers, analyze customer inputs, propose solutions, and validate supplier/team proposals.",
+                    "Lead scope convergence meetings and participate in R&D design and validation reviews."
+                ],
+                skills: [
+                    "CATIA V5", "Documentation", "Team Management", "Engineering Design",
+                    "Pdtech", "Product Design Support", "Product R&D", "Leadership", "Product Development"
+                ]
+            },
+            {
+                role: "Product Development Engineer — Stellantis Dashboard & Console",
+                company: "Bertrandt Group",
+                employmentType: "Full-time • Hybrid",
+                period: "Oct 2023 – Nov 2025",
+                location: "Kenitra, Rabat-Salé-Kénitra, Morocco",
+                programs: ["Stellantis P1H / XXX (Dashboard & Console — Build-to-Print to SYNC5)"],
+                highlights: [
+                    "Participate in product convergence meetings with client engineering teams and drive technical convergence with suppliers.",
+                    "Design plastic components in CATIA V5/V6 respecting process constraints, customer design rules, and assembly techniques.",
+                    "Deliver 2D/3D digital models, archive 3D/2D/material data in customer PLM, report weekly status, and support team members."
+                ],
+                skills: [
+                    "CATIA V5 / V6", "Mechanical Product Design", "Blow Molding", "Injection Molding",
+                    "PLM Tools", "Twinsheet", "Microsoft Office", "Team Management", "Product R&D", "Leadership"
+                ]
+            },
+            {
+                role: "Engineering Leader",
+                company: "Novares Group",
+                employmentType: "Full-time • On-site",
+                period: "Apr 2019 – Oct 2023",
+                location: "Kenitra, Rabat-Salé-Kénitra, Morocco",
+                programs: [
+                    "Renault: HHN (FR/RR B & C Pillar Trim), DHN (C Pillar Trim), 5-Echo (FR/RR B & C Pillar Trim), BJO (Roofbars)",
+                    "PSA / Stellantis: P21 (FR/RR B Pillar Exterior Trim)",
+                    "Customers: Renault, Stellantis, Nissan"
+                ],
+                highlights: [
+                    "Analyze product/process specifications, select product/process concepts, and lead DFMEA action plans.",
+                    "Validate functional/technical specifications and coordinate calculations, validation, metrology, and prototype requests.",
+                    "Execute product-process design for complex trim parts (dashboard, body trims, door panels) from pre-project/architecture to SOP; manage 3D/2D drawings, archiving, and checking fixture validation."
+                ],
+                skills: [
+                    "CATIA V5", "Piloting", "Documentation", "Microsoft Office",
+                    "Engineering Design", "Injection Molding", "Product R&D", "DFMEA"
+                ]
+            },
+            {
+                role: "Manufacturing Engineer",
+                company: "Akka Technologies",
+                employmentType: "Full-time • On-site",
+                period: "Jan 2019 – Apr 2019",
+                location: "Tangier, Tanger-Tetouan-Al Hoceima, Morocco",
+                programs: ["Renault Tangier DIVD Assembly Department — Anti-Forget System"],
+                highlights: [
+                    "Deploy the 'Anti-Forget System' project within the Renault Tangier DIVD assembly department.",
+                    "Configure SAO screwdrivers and boxes, define means specifications, manage supplier development, and launch purchasing tenders."
+                ],
+                skills: [
+                    "CATIA V5", "Microsoft Office", "Team Management", "Manufacturing Process Improvement",
+                    "Lean Manufacturing", "Engineering Design", "Leadership", "Project Planning"
+                ]
+            }
+        ];
+
+        // Custom SVG artwork per project type
+        function getProjectSVG(svgType) {
+            const svgs = {
+                ev: `<svg viewBox="0 0 240 110" class="w-44 h-24 text-cyan-400 light:text-cyan-700" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <rect x="24" y="24" width="76" height="62" rx="8" />
+                    <circle cx="52" cy="46" r="6" />
+                    <circle cx="72" cy="46" r="6" />
+                    <circle cx="52" cy="66" r="5" />
+                    <circle cx="72" cy="66" r="5" />
+                    <path d="M100 55 H138" stroke-dasharray="3 3" />
+                    <rect x="138" y="28" width="78" height="54" rx="6" />
+                    <line x1="152" y1="44" x2="202" y2="44" />
+                    <line x1="152" y1="55" x2="202" y2="55" stroke="#34d399" />
+                    <line x1="152" y1="66" x2="202" y2="66" />
+                </svg>`,
+                cockpit: `<svg viewBox="0 0 240 110" class="w-44 h-24 text-purple-400 light:text-purple-700" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M22 76 C35 42, 85 34, 150 38 L216 44 L212 82 L22 82 Z" />
+                    <circle cx="76" cy="62" r="14" />
+                    <rect x="108" y="48" width="46" height="22" rx="3" />
+                    <path d="M126 70 L132 82 M140 70 L144 82" />
+                </svg>`,
+                exterior: `<svg viewBox="0 0 240 110" class="w-44 h-24 text-sky-400 light:text-sky-700" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M36 78 L54 44 L132 34 L194 46 L206 78 Z" />
+                    <path d="M168 38 L196 76" stroke="#22d3ee" stroke-width="2.2" />
+                    <rect x="88" y="54" width="38" height="10" rx="2" stroke-dasharray="2 2" />
+                    <circle cx="68" cy="78" r="11" />
+                    <circle cx="176" cy="78" r="11" />
+                </svg>`,
+                trim: `<svg viewBox="0 0 240 110" class="w-44 h-24 text-amber-400 light:text-amber-700" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M40 82 L64 34 L176 34 L200 82 Z" />
+                    <line x1="104" y1="34" x2="96" y2="82" stroke="#22d3ee" stroke-width="3" />
+                    <line x1="154" y1="34" x2="148" y2="82" stroke="#22d3ee" stroke-width="3" />
+                    <line x1="68" y1="27" x2="172" y2="27" stroke="#34d399" stroke-width="2.5" stroke-linecap="round" />
+                </svg>`,
+                manufacturing: `<svg viewBox="0 0 240 110" class="w-44 h-24 text-emerald-400 light:text-emerald-700" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <rect x="26" y="34" width="54" height="42" rx="6" />
+                    <path d="M80 55 H122" />
+                    <circle cx="144" cy="55" r="20" />
+                    <path d="M136 55 L142 61 L154 49" stroke="#22d3ee" stroke-width="2.2" />
+                    <path d="M164 55 H214" stroke-dasharray="3 3" />
+                </svg>`
+            };
+            return svgs[svgType] || svgs.trim;
+        }
+
+        function renderProjectVisual(project, isModal = false) {
+            const activeSrc = getEffectiveImageSrc(project);
+            const fallbackAttr = project.fallbackSrc
+                ? `data-fallback="${project.fallbackSrc}"`
+                : `data-fallback=""`;
+
+            if (activeSrc && activeSrc.trim() !== "") {
+                return `
+                    <img
+                        src="${activeSrc}"
+                        ${fallbackAttr}
+                        alt="${project.title}"
+                        referrerpolicy="no-referrer"
+                        class="w-full h-full ${isModal ? "object-contain bg-slate-950" : "object-cover group-hover:scale-105 transition-transform duration-500"}"
+                        onerror="if(this.dataset.fallback && this.src !== this.dataset.fallback){ this.src = this.dataset.fallback; this.dataset.fallback = ''; } else { this.style.display='none'; this.nextElementSibling.style.display='flex'; }"
+                    />
+                    <div class="hidden w-full h-full flex-col items-center justify-center p-3 text-center">
+                        ${getProjectSVG(project.svgType)}
+                        <span class="text-[11px] font-mono text-slate-500 mt-1">${project.imageCaption}</span>
+                    </div>
+                `;
+            }
+            return `
+                <div class="w-full h-full flex flex-col items-center justify-center p-3 text-center">
+                    ${getProjectSVG(project.svgType)}
+                    <span class="text-[11px] font-mono text-slate-500 light:text-slate-600 mt-1 px-2">${project.imageCaption}</span>
+                </div>
+            `;
+        }
+
+        // Render project cards
+        function renderProjects(filter = "all") {
+            const grid = document.getElementById("projectsGrid");
+            const filtered = filter === "all"
+                ? projectsData
+                : projectsData.filter(p => p.companyKey === filter);
+
+            grid.innerHTML = filtered.map(project => `
+                <article class="group rounded-2xl bg-slate-900/90 light:bg-white border border-slate-800 light:border-slate-200 hover:border-cyan-500/60 shadow-lg transition-all duration-200 flex flex-col overflow-hidden">
+                    <div class="h-48 bg-slate-950 light:bg-slate-100 border-b border-slate-800 light:border-slate-200 relative overflow-hidden">
+                        ${renderProjectVisual(project, false)}
+                        <div class="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-slate-950/80 to-transparent pointer-events-none"></div>
+                        <span class="absolute top-3 right-3 px-2.5 py-0.5 rounded-md font-mono text-[10px] font-bold bg-slate-950/85 light:bg-white/90 text-cyan-300 light:text-cyan-800 border border-cyan-500/30 light:border-cyan-200 backdrop-blur-sm">
+                            ${project.badge}
+                        </span>
+                        <button type="button" data-photo-id="${project.id}" title="Replace photo URL" class="change-photo-btn absolute bottom-2.5 right-2.5 px-2 py-1 rounded-md font-mono text-[10px] bg-slate-950/85 hover:bg-cyan-500 text-slate-200 hover:text-slate-950 border border-slate-700 transition backdrop-blur-sm inline-flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i>
+                            <span>Photo</span>
+                        </button>
+                    </div>
+
+                    <div class="p-5 sm:p-6 flex-1 flex flex-col justify-between gap-5">
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between gap-2 font-mono text-[11px] text-cyan-400 light:text-cyan-700">
+                                <span>${project.companyLabel}</span>
+                                <span class="text-slate-500">${project.period}</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white light:text-slate-900 group-hover:text-cyan-400 light:group-hover:text-cyan-700 transition leading-snug">
+                                ${project.title}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-400 light:text-slate-600 leading-relaxed">
+                                ${project.summary}
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="flex flex-wrap gap-1.5">
+                                ${project.tools.slice(0, 4).map(tool => `
+                                    <span class="px-2 py-0.5 rounded font-mono text-[11px] bg-slate-950 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-200">${tool}</span>
+                                `).join("")}
+                            </div>
+                            <button type="button" data-project-id="${project.id}" class="open-case-btn w-full py-2.5 px-4 rounded-xl bg-slate-800 light:bg-slate-100 hover:bg-cyan-500 hover:text-slate-950 text-slate-200 light:text-slate-800 font-mono text-xs font-semibold border border-slate-700 light:border-slate-300 transition flex items-center justify-center gap-2">
+                                <span>OPEN CASE STUDY</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join("");
+
+            document.querySelectorAll(".open-case-btn").forEach(btn => {
+                btn.addEventListener("click", () => openCaseStudyModal(btn.getAttribute("data-project-id")));
+            });
+            document.querySelectorAll(".change-photo-btn").forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    openPhotoEditorModal(btn.getAttribute("data-photo-id"));
+                });
+            });
+        }
+
+        // Render experience & role-specific skills timeline
+        function renderExperience() {
+            const container = document.getElementById("experienceTimeline");
+            container.innerHTML = experienceData.map((exp, idx) => `
+                <div class="relative pl-6 sm:pl-9">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-950 light:bg-slate-50 border-2 ${idx === 0 ? "border-cyan-400" : "border-slate-500"}"></span>
+
+                    <div class="rounded-2xl bg-slate-950/90 light:bg-white border border-slate-800 light:border-slate-200 p-5 sm:p-6 shadow-sm space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-slate-800/80 light:border-slate-200 pb-3.5">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-white light:text-slate-900">${exp.role}</h3>
+                                <div class="text-sm font-medium text-cyan-400 light:text-cyan-700">
+                                    ${exp.company} <span class="text-slate-400 light:text-slate-500 font-normal">• ${exp.location}</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col md:items-end gap-1">
+                                <span class="font-mono text-xs px-2.5 py-1 rounded-md bg-slate-900 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-200 w-fit">
+                                    ${exp.period}
+                                </span>
+                                <span class="font-mono text-[11px] text-slate-500">${exp.employmentType}</span>
+                            </div>
+                        </div>
+
+                        <!-- Programs / Scope Tags -->
+                        <div class="flex flex-wrap gap-2">
+                            ${exp.programs.map(prog => `
+                                <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-cyan-950/50 light:bg-cyan-50 text-cyan-300 light:text-cyan-800 border border-cyan-500/20 light:border-cyan-200">
+                                    <i class="fa-solid fa-car-side mr-1 opacity-75"></i>${prog}
+                                </span>
+                            `).join("")}
+                        </div>
+
+                        <!-- Responsibilities -->
+                        <ul class="list-disc list-inside space-y-1.5 text-xs sm:text-sm text-slate-300 light:text-slate-700 leading-relaxed">
+                            ${exp.highlights.map(item => `<li>${item}</li>`).join("")}
+                        </ul>
+
+                        <!-- Skills for this Position -->
+                        <div class="pt-2">
+                            <div class="font-mono text-[11px] uppercase tracking-wider text-slate-500 mb-2">
+                                Skills for ${exp.role.split("—")[0].trim()} at ${exp.company}
+                            </div>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${exp.skills.map(skill => `
+                                    <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-900 light:bg-slate-100 text-slate-300 light:text-slate-700 border border-slate-800 light:border-slate-200">
+                                        ${skill}
+                                    </span>
+                                `).join("")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        // Case Study Modal Logic
+        const caseModal = document.getElementById("caseStudyModal");
+        const caseModalContent = document.getElementById("caseStudyModalContent");
+        const closeCaseModalBtn = document.getElementById("closeCaseModalBtn");
+
+        function openCaseStudyModal(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+
+            const officialLinkHtml = project.officialProductUrl
+                ? `<div class="pt-1">
+                    <a href="${project.officialProductUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 light:text-cyan-800 border border-cyan-500/30 font-mono text-xs font-semibold transition">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span>${project.officialProductLabel}</span>
+                    </a>
+                   </div>`
+                : "";
+
+            caseModalContent.innerHTML = `
+                <div class="space-y-1.5">
+                    <div class="font-mono text-xs text-cyan-400 light:text-cyan-700">${project.companyLabel} • ${project.period}</div>
+                    <h2 id="modalTitle" class="text-xl sm:text-2xl font-bold text-white light:text-slate-900">${project.title}</h2>
+                    ${officialLinkHtml}
+                </div>
+
+                <div class="h-56 sm:h-64 rounded-xl bg-slate-950 light:bg-slate-100 border border-slate-800 light:border-slate-200 overflow-hidden flex items-center justify-center relative">
+                    ${renderProjectVisual(project, true)}
+                </div>
+                <div class="text-[11px] font-mono text-slate-400 light:text-slate-600 text-center -mt-3">
+                    ${project.imageCaption}
+                </div>
+
+                <div class="space-y-4 text-sm">
+                    <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 space-y-1.5">
+                        <div class="font-mono text-xs font-bold uppercase text-cyan-400 light:text-cyan-700">1. Technical Challenge &amp; Scope</div>
+                        <p class="text-slate-300 light:text-slate-700 leading-relaxed">${project.challenge}</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-950/60 light:bg-slate-50 border border-slate-800 light:border-slate-200 space-y-1.5">
+                        <div class="font-mono text-xs font-bold uppercase text-cyan-400 light:text-cyan-700">2. Engineering Approach &amp; Execution</div>
+                        <p class="text-slate-300 light:text-slate-700 leading-relaxed">${project.approach}</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="font-mono text-xs font-bold uppercase text-cyan-400 light:text-cyan-700">3. Tools &amp; Methods</div>
+                        <div class="flex flex-wrap gap-2">
+                            ${project.tools.map(t => `<span class="px-2.5 py-1 rounded-md font-mono text-xs bg-slate-800 light:bg-slate-200 text-slate-200 light:text-slate-800">${t}</span>`).join("")}
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="font-mono text-xs font-bold uppercase text-emerald-400 light:text-emerald-700">4. Key Deliverables &amp; Outcomes</div>
+                        <ul class="list-disc list-inside space-y-1.5 text-slate-300 light:text-slate-700">
+                            ${project.deliverables.map(d => `<li>${d}</li>`).join("")}
+                        </ul>
+                    </div>
+                </div>
+            `;
+
+            caseModal.classList.remove("hidden");
+            caseModal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeCaseStudyModal() {
+            caseModal.classList.add("hidden");
+            caseModal.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+
+        closeCaseModalBtn.addEventListener("click", closeCaseStudyModal);
+        caseModal.addEventListener("click", (e) => {
+            if (e.target === caseModal) closeCaseStudyModal();
+        });
+
+        // Raw HTML Source Modal Logic
+        const sourceModal = document.getElementById("sourceCodeModal");
+        const rawHtmlTextarea = document.getElementById("rawHtmlTextarea");
+        const openSourceModalBtn = document.getElementById("openSourceModalBtn");
+        const mobileSourceBtn = document.getElementById("mobileSourceBtn");
+        const footerSourceBtn = document.getElementById("footerSourceBtn");
+        const closeSourceModalBtn = document.getElementById("closeSourceModalBtn");
+        const copySourceBtn = document.getElementById("copySourceBtn");
+
+        function openSourceModal() {
+            rawHtmlTextarea.value = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            sourceModal.classList.remove("hidden");
+            sourceModal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeSourceModal() {
+            sourceModal.classList.add("hidden");
+            sourceModal.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+
+        [openSourceModalBtn, mobileSourceBtn, footerSourceBtn].forEach(btn => {
+            if (btn) btn.addEventListener("click", openSourceModal);
+        });
+        closeSourceModalBtn.addEventListener("click", closeSourceModal);
+        sourceModal.addEventListener("click", (e) => {
+            if (e.target === sourceModal) closeSourceModal();
+        });
+
+        // Clipboard helper
+        const toastBanner = document.getElementById("toastBanner");
+        const toastMessage = document.getElementById("toastMessage");
+        let toastTimer = null;
+
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toastBanner.classList.remove("hidden");
+            toastBanner.classList.add("flex");
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toastBanner.classList.add("hidden");
+                toastBanner.classList.remove("flex");
+            }, 2600);
+        }
+
+        function copyToClipboard(text, successMsg) {
+            const helper = document.createElement("textarea");
+            helper.value = text;
+            document.body.appendChild(helper);
+            helper.select();
+            try {
+                document.execCommand("copy");
+                showToast(successMsg);
+            } catch (err) {
+                showToast("Unable to copy automatically");
+            }
+            document.body.removeChild(helper);
+        }
+
+        copySourceBtn.addEventListener("click", () => {
+            copyToClipboard(rawHtmlTextarea.value, "Full index.html source copied!");
+        });
+
+        const copyEmailBtn = document.getElementById("copyEmailBtn");
+        copyEmailBtn.addEventListener("click", () => {
+            const email = copyEmailBtn.getAttribute("data-email");
+            copyToClipboard(email, `Copied: ${email}`);
+        });
+
+        // Filter button interactions
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".filter-btn").forEach(b => {
+                    b.classList.remove("bg-cyan-500", "text-slate-950", "font-bold");
+                    b.classList.add("text-slate-300", "light:text-slate-700", "font-medium");
+                });
+                btn.classList.add("bg-cyan-500", "text-slate-950", "font-bold");
+                btn.classList.remove("text-slate-300", "light:text-slate-700", "font-medium");
+                renderProjects(btn.getAttribute("data-filter"));
+            });
+        });
+
+        // Theme toggle (Dark / Light mode)
+        const htmlRoot = document.documentElement;
+        const themeToggleBtn = document.getElementById("themeToggleBtn");
+        const themeIcon = document.getElementById("themeIcon");
+
+        function syncThemeIcon() {
+            const isLight = htmlRoot.classList.contains("light");
+            themeIcon.className = isLight
+                ? "fa-solid fa-moon text-slate-700 text-sm"
+                : "fa-solid fa-sun text-amber-400 text-sm";
+        }
+
+        themeToggleBtn.addEventListener("click", () => {
+            if (htmlRoot.classList.contains("light")) {
+                htmlRoot.classList.remove("light");
+                htmlRoot.classList.add("dark");
+            } else {
+                htmlRoot.classList.remove("dark");
+                htmlRoot.classList.add("light");
+            }
+            syncThemeIcon();
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        mobileMenuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+        document.querySelectorAll(".mobile-nav-link").forEach(link => {
+            link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+        });
+
+        // Photo Editor Modal Logic
+        const photoModal = document.getElementById("photoEditorModal");
+        const photoModalProjectName = document.getElementById("photoModalProjectName");
+        const customPhotoUrlInput = document.getElementById("customPhotoUrlInput");
+        const closePhotoModalBtn = document.getElementById("closePhotoModalBtn");
+        const savePhotoUrlBtn = document.getElementById("savePhotoUrlBtn");
+        const resetPhotoUrlBtn = document.getElementById("resetPhotoUrlBtn");
+        let activeEditingProjectId = null;
+
+        function openPhotoEditorModal(projectId) {
+            const project = projectsData.find(p => p.id === projectId);
+            if (!project) return;
+            activeEditingProjectId = projectId;
+            photoModalProjectName.textContent = project.title;
+            customPhotoUrlInput.value = getEffectiveImageSrc(project) || "";
+            photoModal.classList.remove("hidden");
+            photoModal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePhotoEditorModal() {
+            photoModal.classList.add("hidden");
+            photoModal.classList.remove("flex");
+            document.body.style.overflow = "";
+            activeEditingProjectId = null;
+        }
+
+        function getActiveFilter() {
+            const activeBtn = document.querySelector(".filter-btn.bg-cyan-500");
+            return activeBtn ? activeBtn.getAttribute("data-filter") : "all";
+        }
+
+        savePhotoUrlBtn.addEventListener("click", () => {
+            if (!activeEditingProjectId) return;
+            const newUrl = customPhotoUrlInput.value.trim();
+            customPhotoOverrides[activeEditingProjectId] = newUrl;
+            const target = projectsData.find(p => p.id === activeEditingProjectId);
+            if (target) target.imageSrc = newUrl;
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(customPhotoOverrides));
+            } catch (e) {}
+            renderProjects(getActiveFilter());
+            closePhotoEditorModal();
+            showToast("Project photo updated!");
+        });
+
+        resetPhotoUrlBtn.addEventListener("click", () => {
+            if (!activeEditingProjectId) return;
+            delete customPhotoOverrides[activeEditingProjectId];
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(customPhotoOverrides));
+            } catch (e) {}
+            renderProjects(getActiveFilter());
+            closePhotoEditorModal();
+            showToast("Photo reset to default.");
+        });
+
+        closePhotoModalBtn.addEventListener("click", closePhotoEditorModal);
+        photoModal.addEventListener("click", (e) => {
+            if (e.target === photoModal) closePhotoEditorModal();
+        });
+
+        // Escape key closes open modals
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeCaseStudyModal();
+                closeSourceModal();
+                closePhotoEditorModal();
+            }
+        });
+
+        // Initialize year & sections
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+        syncThemeIcon();
+        renderProjects("all");
+        renderExperience();
+    </script>
+</body>
+</html>
